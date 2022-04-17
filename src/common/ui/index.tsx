@@ -1,3 +1,3 @@
-import PageContainer from "./page-container";
+import AppContainer from './app-container';
 
-export { PageContainer };
+export { AppContainer };

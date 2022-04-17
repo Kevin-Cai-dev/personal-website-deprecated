@@ -1,23 +1,26 @@
-import { useState, useEffect, createContext } from "react";
-import type { AppProps } from "next/app";
+import type { AppProps } from 'next/app';
+import { useEffect, useState } from 'react';
 
-import { LIGHT, DARK } from "@website/common/constants";
-import { Context } from "@website/common/utils/theme";
+import { DARK, LIGHT } from '@website/common/constants';
+import { AppContainer } from '@website/common/ui';
+import { Context } from '@website/common/utils/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState<string | null>(null);
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
+    const theme = localStorage.getItem('theme');
     setTheme(theme);
     if (theme !== LIGHT && theme !== DARK) {
-      localStorage.setItem("theme", LIGHT);
+      localStorage.setItem('theme', LIGHT);
       setTheme(theme);
     }
   }, []);
 
   return (
     <Context.Provider value={theme}>
-      <Component {...pageProps} />
+      <AppContainer isDarkMode={theme === DARK}>
+        <Component {...pageProps} />
+      </AppContainer>
     </Context.Provider>
   );
 }

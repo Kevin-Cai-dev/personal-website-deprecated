@@ -1,3 +1,20 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["@typescript-eslint", "import"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "index"],
+        "newlines-between": "always"
+      }
+    ]
+  },
+  "ignorePatterns": ["node_modules", "public"]
 }

@@ -1,4 +1,4 @@
-import { NavBarWrapper } from "./styled";
+import { NavBarWrapper } from './styled';
 
 const NavBar = () => {
   return (

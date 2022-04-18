@@ -1,14 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 
 interface Props {
-  isDarkMode: boolean;
+  darkModeColours: { [key: string]: string };
 }
 
 const GlobalTheme = createGlobalStyle<Props>`
     body {
         margin: 0;
-        background-color: ${(props) =>
-          props.isDarkMode ? '#222222' : 'white'};
+        background-color: ${(p) => p.darkModeColours.background};
 
         h1 {
           font-family: 'Prata', serif;
@@ -24,6 +23,9 @@ const GlobalTheme = createGlobalStyle<Props>`
         }
 
         font-family: 'Lato', sans-serif;
+        color: ${(p) => p.darkModeColours.text};
+
+        transition: background-color 0.1s, color 0.1s;
     }
 `;
 

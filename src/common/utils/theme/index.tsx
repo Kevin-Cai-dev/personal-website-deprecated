@@ -1,14 +1,18 @@
+import noop from 'lodash/noop';
 import { createContext } from 'react';
 
-import { LIGHT, DARK } from '@website/common/constants';
+export interface ColourTypes {
+  [key: string]: string;
+}
 
-export const toggleDarkMode = () => {
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme !== LIGHT && currentTheme !== DARK) {
-    return localStorage.setItem('theme', LIGHT);
-  }
-  const newTheme = currentTheme === LIGHT ? DARK : LIGHT;
-  return localStorage.setItem('theme', newTheme);
-};
+interface ContextTypes {
+  isDarkMode: boolean;
+  setDarkMode: (newState: boolean) => void;
+  darkModeColours: ColourTypes;
+}
 
-export const Context = createContext<string | null>(null);
+export const ThemeContext = createContext<ContextTypes>({
+  isDarkMode: false,
+  setDarkMode: noop,
+  darkModeColours: {},
+});

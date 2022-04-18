@@ -1,6 +1,14 @@
-const name = 'Kevin';
-
+// dark mode
 export const LIGHT = 'light';
 export const DARK = 'dark';
 
-export default name;
+// background image colours
+export enum BackgroundColours {
+  RED = 'red',
+  BLUE = 'blue',
+  GREEN = 'green',
+  ORANGE = 'orange',
+  PURPLE = 'purple',
+}
+
+// theme colours

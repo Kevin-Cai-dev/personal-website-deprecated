@@ -1,8 +1,9 @@
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 import { DARK, LIGHT } from '@website/common/constants';
-import { AppContainer } from '@website/common/ui';
+import { AppContainer, GlobalTheme } from '@website/common/ui';
 import { Context } from '@website/common/utils/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -18,7 +19,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <Context.Provider value={theme}>
-      <AppContainer isDarkMode={theme === DARK}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+      </Head>
+      <GlobalTheme isDarkMode={theme === DARK} />
+      <AppContainer>
         <Component {...pageProps} />
       </AppContainer>
     </Context.Provider>

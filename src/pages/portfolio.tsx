@@ -1,7 +1,12 @@
 import type { NextPage } from 'next';
 
+import { BackgroundColours } from '@website/common/constants';
+import { portfolioMessages } from '@website/common/messages';
+import { TitleScreen } from '@website/common/ui';
+
 const PortfolioPage: NextPage = () => {
-  return <div>Portfolio</div>;
+  const { title } = portfolioMessages;
+  return <TitleScreen colour={BackgroundColours.BLUE} title={title} />;
 };
 
 export default PortfolioPage;
